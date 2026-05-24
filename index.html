@@ -135,6 +135,60 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
 .footer-links a:hover{color:var(--v)}
 .footer-copy{font-size:10px;color:var(--text3);letter-spacing:.06em}
 
+/* ── CAREERS ── */
+.careers-section{position:relative;z-index:1;padding:100px 5%;border-top:1px solid var(--border);max-width:1100px;margin:0 auto}
+.role-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:40px}
+.role-header{padding:32px 36px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--border)}
+.role-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-.02em}
+.role-pills{display:flex;gap:8px;flex-wrap:wrap}
+.role-pill{font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text2);background:rgba(255,255,255,0.5)}
+.role-pill.hot{background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.3);color:var(--v)}
+.role-apply{background:var(--v);color:white;border:none;padding:12px 24px;border-radius:20px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-block;white-space:nowrap}
+.role-apply:hover{background:var(--v2)}
+.role-body{padding:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+.role-col-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--v);margin-bottom:16px;display:block}
+.role-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.role-list li{font-size:13px;color:var(--text2);line-height:1.6;padding-left:16px;position:relative;font-weight:300}
+.role-list li::before{content:'→';position:absolute;left:0;color:var(--v);font-size:11px;top:1px}
+.role-note{padding:24px 36px;border-top:1px solid var(--border);background:rgba(139,92,246,0.03)}
+.role-note p{font-size:13px;color:var(--text2);line-height:1.7;font-weight:300}
+.role-note strong{font-weight:500;color:var(--text)}
+/* ── APPLICATION FORM ── */
+.app-form-wrap{margin-top:48px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.app-form-header{padding:36px 40px 28px;border-bottom:1px solid var(--border)}
+.app-form{padding:36px 40px 40px}
+.app-section-label{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--v);margin-bottom:16px;display:block;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.app-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.app-field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.app-field:last-child{margin-bottom:0}
+.app-label{font-size:12px;font-weight:500;color:var(--text);letter-spacing:.04em}
+.req{color:var(--v)}
+.app-input{background:rgba(255,255,255,0.7);border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-family:'DM Mono',monospace;font-size:13px;color:var(--text);outline:none;transition:border-color .2s;width:100%}
+.app-input:focus{border-color:rgba(139,92,246,0.5);background:white}
+.app-input::placeholder{color:var(--text3)}
+.app-textarea{background:rgba(255,255,255,0.7);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'DM Mono',monospace;font-size:13px;color:var(--text);outline:none;transition:border-color .2s;width:100%;resize:vertical;line-height:1.65}
+.app-textarea:focus{border-color:rgba(139,92,246,0.5);background:white}
+.app-textarea::placeholder{color:var(--text3)}
+.app-hint{font-size:11px;color:var(--text3);margin-top:5px;line-height:1.55;letter-spacing:.02em}
+.app-input-prefix{display:flex;align-items:center;background:rgba(255,255,255,0.7);border:1.5px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s}
+.app-input-prefix:focus-within{border-color:rgba(139,92,246,0.5);background:white}
+.prefix{font-size:12px;color:var(--text3);padding:11px 10px 11px 14px;white-space:nowrap;border-right:1px solid var(--border);background:rgba(139,92,246,0.04)}
+.prefix-input{border:none!important;border-radius:0!important;background:transparent!important;flex:1;padding:11px 14px}
+.prefix-input:focus{outline:none}
+.app-submit-row{display:flex;align-items:center;gap:20px;margin-top:32px;flex-wrap:wrap}
+.app-submit-btn{background:var(--v);color:white;border:none;padding:14px 32px;border-radius:24px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;font-weight:400}
+.app-submit-btn:hover{background:var(--v2);transform:translateY(-1px)}
+.app-submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.app-submit-note{font-size:12px;color:var(--text3);line-height:1.55;max-width:280px}
+.app-success{display:none;text-align:center;padding:40px 20px}
+.app-success-icon{font-size:28px;color:var(--v);margin-bottom:12px}
+.app-success-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:10px}
+.app-success-body{font-size:14px;color:var(--text2);line-height:1.7;max-width:400px;margin:0 auto;font-weight:300}
+@media(max-width:640px){
+  .app-row-2{grid-template-columns:1fr}
+  .app-form,.app-form-header{padding:24px 20px}
+  .app-submit-row{flex-direction:column;align-items:flex-start}
+}
 @keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -160,8 +214,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
     <a href="#problem">Why now</a>
     <a href="#how">How it works</a>
     <a href="#vision">Vision</a>
+    <a href="#careers">Careers</a>
   </div>
-  <button class="nav-cta" onclick="document.getElementById('waitlist-input').focus()">Join waitlist</button>
+  <button class="nav-cta" onclick="document.getElementById('waitlist-input').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){document.getElementById('waitlist-input').focus();},600)">Join waitlist</button>
 </nav>
 
 <section class="hero">
@@ -289,6 +344,227 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
   </div>
 </section>
 
+<!-- CAREERS -->
+<div id="careers" class="careers-section">
+  <div class="reveal">
+    <span class="section-tag">We're hiring</span>
+    <h2>Build the interface<br>layer that comes <em>after the keyboard.</em></h2>
+    <p class="section-sub">This isn't a job listing. It's a co-founder search. We're looking for a technical visionary who finds this problem more exciting than any other in computing right now.</p>
+  </div>
+
+  <div class="role-card reveal">
+    <div class="role-header">
+      <div>
+        <div class="role-title">Co-Founder & CTO</div>
+        <div class="role-pills">
+          <span class="role-pill hot">Co-Founder</span>
+          <span class="role-pill hot">Significant equity</span>
+          <span class="role-pill">Remote-first</span>
+          <span class="role-pill">Full-time</span>
+          <span class="role-pill">Immediate start</span>
+        </div>
+      </div>
+      <a href="#apply" class="role-apply" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Apply below →</a>
+    </div>
+
+    <div class="role-body">
+      <div>
+        <span class="role-col-title">The problem you'll solve</span>
+        <ul class="role-list">
+          <li>Voice recognition is solved. The hard problem is what happens next — coordinating action across every device and interface from a single voice command with no persistent UI to anchor to</li>
+          <li>Build the cross-device state layer that makes a voice command on your phone trigger action on your laptop and glasses simultaneously</li>
+          <li>Design the architecture that lets Vera understand intent, not just words — across contexts, apps, and device ecosystems</li>
+          <li>Own the full technical vision from zero to shipped product to platform</li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="role-col-title">What you'll build</span>
+        <ul class="role-list">
+          <li>Universal voice-to-action coordination layer across phones, computers, and smart glasses</li>
+          <li>On-device LLM integration for real-time intent understanding with sub-200ms latency</li>
+          <li>Cross-device state synchronisation protocol — the hardest and most interesting part</li>
+          <li>Developer SDK and third-party app integration API</li>
+          <li>AR and smart glasses interface layer — the frontier nobody has cracked</li>
+          <li>Privacy-first architecture — local processing wherever possible</li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="role-col-title">Background that matters</span>
+        <ul class="role-list">
+          <li>Voice interfaces, speech AI, or ambient computing</li>
+          <li>Multimodal AI or LLM agent orchestration at scale</li>
+          <li>AR / smart glasses SDK development (Meta, Apple, Google ecosystems)</li>
+          <li>Cross-device or distributed systems architecture</li>
+          <li>Mobile (iOS / Android) and desktop (macOS / Windows) native development</li>
+          <li>0→1 engineering — you've shipped things from scratch that people actually use</li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="role-col-title">What actually matters most</span>
+        <ul class="role-list">
+          <li>You read "cross-device state coordination for voice-first interfaces with no persistent UI" and immediately had an opinion about how to solve it</li>
+          <li>You want to own the technical direction — not execute someone else's roadmap</li>
+          <li>You've probably already thought about this problem even if you haven't named it</li>
+          <li>You believe the keyboard is a historical accident we're all still paying for</li>
+          <li>You want your name on something that changes how humans interact with computers</li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="role-col-title">What you get</span>
+        <ul class="role-list">
+          <li>Significant co-founder equity — negotiated as partners, not employer and employee</li>
+          <li>CTO title and full technical co-founder status from day one</li>
+          <li>A product with a growing waitlist, real user demand, and a clear category</li>
+          <li>A co-founder who handles product strategy, GTM, fundraising, and investor relations — so you can build without distraction</li>
+          <li>The opportunity to define a new computing paradigm before Big Tech gets there</li>
+        </ul>
+      </div>
+
+      <div>
+        <span class="role-col-title">The process</span>
+        <ul class="role-list">
+          <li>Apply below — takes 5 minutes</li>
+          <li>First call: 20 minutes, no deck, just two people thinking about the same hard problem</li>
+          <li>Second call: go deep on the architecture together — this is where we both figure out if we think the same way</li>
+          <li>Weekend build: we make something small together — the fastest co-founder compatibility test there is</li>
+          <li>We move fast — ideal start is immediately</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role-note">
+      <p><strong>This is a co-founder search, not a hiring process.</strong> The right person won't apply because of the requirements list — they'll apply because they've already been thinking about this problem. We're not looking for someone to execute a vision. We're looking for someone who will <em>shape it</em>. If that's you — apply below and tell us what you think the hardest technical problem is. That answer tells us everything.</p>
+    </div>
+  </div>
+
+  <!-- APPLICATION FORM -->
+  <div id="apply" class="app-form-wrap reveal">
+    <div class="app-form-header">
+      <span class="section-tag">Apply</span>
+      <h2 style="font-size:clamp(24px,3vw,38px);margin-bottom:8px">Co-Founder & CTO <em>Application</em></h2>
+      <p style="font-size:14px;color:var(--text2);font-weight:300">Takes 5 minutes. No fluff. Just tell us who you are and how you think.</p>
+    </div>
+
+    <form id="appForm" class="app-form" action="https://formspree.io/f/maqkbakj" method="POST" onsubmit="submitApp(event)">
+      <input type="hidden" name="_subject" value="Co-Founder CTO Application — Vera 🎙️">
+      <input type="text" name="_gotcha" style="display:none">
+      <input type="hidden" name="type" value="cofounder-application">
+
+      <!-- PERSONAL INFO -->
+      <div class="app-section-label">Personal info</div>
+      <div class="app-row-2">
+        <div class="app-field">
+          <label class="app-label">Full name <span class="req">*</span></label>
+          <input type="text" name="name" class="app-input" placeholder="Your full name" required>
+        </div>
+        <div class="app-field">
+          <label class="app-label">Email <span class="req">*</span></label>
+          <input type="email" name="email" class="app-input" placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="app-row-2">
+        <div class="app-field">
+          <label class="app-label">Phone number</label>
+          <input type="tel" name="phone" class="app-input" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="app-field">
+          <label class="app-label">Location <span class="req">*</span></label>
+          <input type="text" name="location" class="app-input" placeholder="City, Country" required>
+        </div>
+      </div>
+
+      <!-- LINKS -->
+      <div class="app-section-label" style="margin-top:28px">Your work online</div>
+      <div class="app-row-2">
+        <div class="app-field">
+          <label class="app-label">GitHub</label>
+          <div class="app-input-prefix">
+            <span class="prefix">github.com/</span>
+            <input type="text" name="github" class="app-input prefix-input" placeholder="username">
+          </div>
+        </div>
+        <div class="app-field">
+          <label class="app-label">LinkedIn</label>
+          <div class="app-input-prefix">
+            <span class="prefix">linkedin.com/in/</span>
+            <input type="text" name="linkedin" class="app-input prefix-input" placeholder="username">
+          </div>
+        </div>
+      </div>
+      <div class="app-row-2">
+        <div class="app-field">
+          <label class="app-label">Personal website / portfolio</label>
+          <input type="url" name="website" class="app-input" placeholder="https://yoursite.com">
+        </div>
+        <div class="app-field">
+          <label class="app-label">Other relevant link</label>
+          <input type="url" name="other_link" class="app-input" placeholder="Demo, paper, side project...">
+        </div>
+      </div>
+
+      <!-- BRIEF INTRO -->
+      <div class="app-section-label" style="margin-top:28px">Tell us about yourself</div>
+      <div class="app-field">
+        <label class="app-label">Brief intro <span class="req">*</span></label>
+        <textarea name="intro" class="app-textarea" rows="4" placeholder="Who are you, what have you built, and why are you the person to solve this problem?" required></textarea>
+        <div class="app-hint">3–5 sentences. Be specific. What you've shipped matters more than where you've worked.</div>
+      </div>
+
+      <div class="app-field" style="margin-top:20px">
+        <label class="app-label">Why Vera? Why now? <span class="req">*</span></label>
+        <textarea name="why_vera" class="app-textarea" rows="4" placeholder="What is it about the cross-device voice coordination problem that you find genuinely interesting?" required></textarea>
+        <div class="app-hint">This is the most important question. There's no right answer — we're looking for evidence that you've thought about this independently.</div>
+      </div>
+
+      <div class="app-field" style="margin-top:20px">
+        <label class="app-label">Your take on the architecture <span class="req">*</span></label>
+        <textarea name="architecture" class="app-textarea" rows="5" placeholder="How would you approach building a universal voice-to-action layer across phones, computers, and smart glasses? What's the hardest part and how would you tackle it?" required></textarea>
+        <div class="app-hint">Don't overthink this. We want your instincts — not a polished answer. Rough thinking is fine. Wrong answers don't exist.</div>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="app-section-label" style="margin-top:28px">1-minute intro video</div>
+      <div class="app-field">
+        <label class="app-label">Video link <span style="color:var(--text3);font-weight:300">(optional but highly recommended)</span></label>
+        <input type="url" name="video_link" class="app-input" placeholder="Loom, YouTube (unlisted), or Google Drive link...">
+        <div class="app-hint">Record a 60-second video telling us: who you are, what you've built, and what excites you about the cross-device voice problem. No editing, no production quality needed — we want to see how you think, not how you present. <strong style="color:var(--text2)">Loom is free at loom.com and takes 2 minutes to set up.</strong></div>
+      </div>
+
+      <!-- RESUME -->
+      <div class="app-section-label" style="margin-top:28px">Resume / CV</div>
+      <div class="app-field">
+        <label class="app-label">Link to your resume or CV</label>
+        <input type="url" name="resume_link" class="app-input" placeholder="Google Drive, Dropbox, personal site link...">
+        <div class="app-hint">A link to a PDF or online resume works perfectly. No need to attach a file.</div>
+      </div>
+
+      <!-- ANYTHING ELSE -->
+      <div class="app-field" style="margin-top:20px">
+        <label class="app-label">Anything else you want us to know</label>
+        <textarea name="anything_else" class="app-textarea" rows="3" placeholder="Side projects, papers, talks, things you've built that don't fit anywhere else..."></textarea>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="app-submit-row">
+        <button type="submit" class="app-submit-btn" id="appSubmitBtn">
+          Submit application →
+        </button>
+        <div class="app-submit-note">We read every application personally. You'll hear from Diana directly.</div>
+      </div>
+
+      <div class="app-success" id="appSuccess">
+        <div class="app-success-icon">✦</div>
+        <div class="app-success-title">Application received.</div>
+        <div class="app-success-body">Thank you. Diana will read your application personally and be in touch within 48 hours. If you're the right person — you'll know quickly.</div>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="bottom-cta">
   <span class="section-tag" style="display:block;text-align:center">Join the waitlist</span>
   <h2 class="reveal">The keyboard had<br>a <em>good run.</em></h2>
@@ -309,6 +585,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32
   <div class="footer-logo">Vera</div>
   <div class="footer-links">
     <a href="#problem">Why</a><a href="#how">How</a><a href="#vision">Vision</a>
+    <a href="#careers">Careers</a>
     <a href="mailto:hello@verauvi.com">Contact</a>
   </div>
   <div class="footer-copy">© 2026 Vera · verauvi.com</div>
@@ -463,6 +740,44 @@ var obs=new IntersectionObserver(function(en){
   });
 },{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(function(r){obs.observe(r);});
+
+/* ── APPLICATION SUBMIT ── */
+function submitApp(e){
+  e.preventDefault();
+  var btn=document.getElementById('appSubmitBtn');
+  btn.disabled=true;
+  btn.textContent='Submitting...';
+
+  var form=document.getElementById('appForm');
+  var data={};
+  var inputs=form.querySelectorAll('input[name],textarea[name]');
+  inputs.forEach(function(el){
+    if(el.name&&el.name!=='_gotcha'&&el.value)
+      data[el.name]=el.value;
+  });
+
+  fetch('https://formspree.io/f/maqkbakj',{
+    method:'POST',
+    headers:{'Accept':'application/json','Content-Type':'application/json'},
+    body:JSON.stringify(data)
+  })
+  .then(function(r){return r.json();})
+  .then(function(d){
+    if(d.ok||d.next){
+      form.querySelectorAll('.app-section-label,.app-row-2,.app-field,.app-submit-row').forEach(function(el){el.style.display='none';});
+      document.getElementById('appSuccess').style.display='block';
+    } else {
+      btn.disabled=false;
+      btn.textContent='Submit application →';
+      alert('Something went wrong. Please email hello@verauvi.com directly.');
+    }
+  })
+  .catch(function(){
+    btn.disabled=false;
+    btn.textContent='Submit application →';
+    alert('Network error. Please email hello@verauvi.com directly.');
+  });
+}
 
 /* ── INIT ── */
 window.addEventListener('load',function(){
