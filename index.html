@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vera — Universal Voice Interface</title>
+<meta name="description" content="Your voice controls everything. Vera is the universal action layer for phones, computers, and smart glasses. Join the waitlist.">
+<meta property="og:title" content="Vera — Your voice. Every device. Every action.">
+<meta property="og:description" content="The keyboard had a good run. Vera is what comes next.">
+<meta property="og:url" content="https://verauvi.com">
+<meta name="theme-color" content="#8B5CF6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --v:#8B5CF6;--v2:#7C3AED;
+  --bg:#f5f4f0;--bg2:#edecea;--bg3:#e2e0db;
+  --text:#1a1828;--text2:rgba(26,24,40,0.58);--text3:rgba(26,24,40,0.28);
+  --border:rgba(139,92,246,0.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;min-height:100vh;overflow-x:hidden;}
+
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(139,92,246,0.07) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 85% 80%,rgba(139,92,246,0.04) 0%,transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(139,92,246,0.13) 1px,transparent 1px);background-size:28px 28px;opacity:0.2;pointer-events:none;z-index:0;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(139,92,246,0.1);background:rgba(245,244,240,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo canvas{display:block}
+.nav-wordmark{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--v);letter-spacing:-.02em;}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--v)}
+.nav-cta{background:var(--v);color:white;border:none;padding:9px 20px;border-radius:20px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.nav-cta:hover{background:var(--v2)}
+
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:140px 5% 80px;text-align:center;}
+.hero-mark{position:relative;width:120px;height:120px;margin:0 auto 56px;animation:float 2.8s ease-in-out infinite;}
+@keyframes float{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-20px) scale(1.05)}
+}
+.hero-mark canvas{display:block;filter:drop-shadow(0 0 20px rgba(139,92,246,0.5)) drop-shadow(0 0 8px rgba(139,92,246,0.7));}
+.pulse-ring{position:absolute;border-radius:50%;border:2px solid rgba(139,92,246,0.4);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse-out 2.6s ease-out infinite;}
+.pulse-ring:nth-child(2){animation-delay:.85s;border-width:1.5px;border-color:rgba(139,92,246,0.25);}
+.pulse-ring:nth-child(3){animation-delay:1.7s;border-width:1px;border-color:rgba(139,92,246,0.12);}
+@keyframes pulse-out{0%{width:120px;height:120px;opacity:1}100%{width:420px;height:420px;opacity:0}}
+
+.hero-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--v);margin-bottom:24px;display:inline-flex;align-items:center;gap:8px;animation:fadeup .8s ease both;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:24px;height:1px;background:var(--v);opacity:.4;}
+h1{font-family:'Syne',sans-serif;font-size:clamp(40px,7vw,88px);font-weight:800;line-height:1.04;letter-spacing:-.04em;margin-bottom:28px;color:var(--text);animation:fadeup .8s ease .1s both;}
+h1 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--v);}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--text2);max-width:540px;margin:0 auto 52px;line-height:1.75;font-weight:300;animation:fadeup .8s ease .2s both;}
+
+.waitlist-wrap{animation:fadeup .8s ease .3s both;width:100%;max-width:480px;margin:0 auto;}
+.waitlist-form{display:flex;gap:0;background:rgba(255,255,255,0.72);border:1.5px solid var(--border);border-radius:28px;padding:5px;backdrop-filter:blur(10px);}
+.waitlist-input{flex:1;background:transparent;border:none;outline:none;padding:14px 20px;font-family:'DM Mono',monospace;font-size:13px;color:var(--text);letter-spacing:.04em;min-width:0;}
+.waitlist-input::placeholder{color:var(--text3)}
+.waitlist-btn{background:var(--v);color:white;border:none;padding:12px 24px;border-radius:22px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;}
+.waitlist-btn:hover{background:var(--v2);transform:scale(1.02)}
+.waitlist-btn:active{transform:scale(0.98)}
+.waitlist-count{font-size:11px;color:var(--text3);margin-top:16px;letter-spacing:.08em;text-align:center;}
+.waitlist-count span{color:var(--v)}
+.success-msg{display:none;padding:16px 24px;background:rgba(139,92,246,0.07);border:1px solid rgba(139,92,246,0.22);border-radius:16px;font-size:13px;color:var(--v);letter-spacing:.06em;text-align:center;animation:fadeup .4s ease both;}
+
+.marquee-wrap{position:relative;z-index:1;padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:rgba(139,92,246,0.02);}
+.marquee-track{display:flex;animation:marquee 20s linear infinite;width:max-content;}
+.marquee-item{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text3);padding:0 40px;white-space:nowrap;}
+.marquee-item span{color:var(--v);margin:0 8px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+section{position:relative;z-index:1;padding:100px 5%;max-width:1100px;margin:0 auto;}
+.section-tag{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--v);margin-bottom:16px;display:block;}
+h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px;color:var(--text);}
+h2 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--v);}
+.section-sub{font-size:16px;color:var(--text2);max-width:480px;line-height:1.75;font-weight:300;margin-bottom:56px;}
+
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.problem-card{background:var(--bg2);padding:36px 32px;transition:background .2s;}
+.problem-card:hover{background:var(--bg3)}
+.problem-num{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:var(--v);opacity:.28;line-height:1;margin-bottom:16px;letter-spacing:-.04em;}
+.problem-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;color:var(--text);}
+.problem-body{font-size:13px;color:var(--text2);line-height:1.7;font-weight:300}
+
+.how-steps{display:flex;flex-direction:column;}
+.how-step{display:flex;gap:32px;align-items:flex-start;padding:36px 0;border-bottom:1px solid var(--border);}
+.how-step:last-child{border-bottom:none}
+.how-step-num{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--v);letter-spacing:.04em;flex-shrink:0;width:32px;padding-top:2px;}
+.how-step-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.how-step-desc{font-size:13px;color:var(--text2);line-height:1.75;font-weight:300;max-width:520px}
+
+.vision-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:56px;text-align:center;position:relative;overflow:hidden;}
+.vision-wrap::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(139,92,246,0.05) 0%,transparent 70%);pointer-events:none;}
+.vision-phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:48px;text-align:left;}
+.phase-card{background:rgba(255,255,255,0.55);border:1px solid var(--border);border-radius:14px;padding:24px 20px;}
+.phase-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--v);margin-bottom:10px;display:block;}
+.phase-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text);}
+.phase-desc{font-size:12px;color:var(--text2);line-height:1.65;font-weight:300}
+.phase-card.now{border-color:rgba(139,92,246,0.35);background:rgba(139,92,246,0.05);}
+
+.founder-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.founder-quote{font-family:'Instrument Serif',serif;font-size:clamp(22px,3vw,32px);font-style:italic;line-height:1.45;color:var(--text);}
+.founder-quote em{color:var(--v);font-style:normal}
+.founder-meta{margin-top:28px}
+.founder-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text);}
+.founder-title{font-size:11px;color:var(--text2);margin-top:4px;letter-spacing:.06em}
+.founder-right{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:36px;}
+.stat-item{padding:20px 0;border-bottom:1px solid var(--border)}
+.stat-item:last-child{border-bottom:none}
+.stat-num{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;color:var(--v);letter-spacing:-.03em;display:block;line-height:1;}
+.stat-label{font-size:11px;color:var(--text2);margin-top:6px;letter-spacing:.06em;display:block}
+
+.bottom-cta{position:relative;z-index:1;padding:100px 5%;text-align:center;border-top:1px solid var(--border);}
+.bottom-cta h2{margin:0 auto 16px;max-width:600px}
+.bottom-cta p{font-size:15px;color:var(--text2);margin:0 auto 48px;max-width:400px;line-height:1.75;font-weight:300;}
+
+/* ── ADMIN ── */
+.admin-toggle{position:fixed;bottom:24px;right:24px;z-index:201;background:var(--v);color:white;border:none;width:44px;height:44px;border-radius:50%;font-size:15px;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,0.3);display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.admin-toggle:hover{background:var(--v2)}
+.admin-panel{position:fixed;bottom:78px;right:24px;z-index:200;background:var(--bg2);border:1.5px solid var(--border);border-radius:18px;padding:20px 22px;font-size:11px;letter-spacing:.06em;box-shadow:0 8px 32px rgba(0,0,0,0.1);width:260px;display:none;}
+.admin-title{font-weight:400;color:var(--v);text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px;display:block;font-size:10px;}
+.admin-count{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--text);line-height:1;display:block;margin-bottom:3px;}
+.admin-sub{color:var(--text3);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:block;}
+.admin-emails{max-height:140px;overflow-y:auto;display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.admin-email{font-size:10px;color:var(--text2);padding:5px 9px;background:rgba(139,92,246,0.06);border-radius:7px;letter-spacing:.02em;word-break:break-all;}
+.admin-empty{font-size:10px;color:var(--text3);font-style:italic;padding:4px 0;}
+.admin-export{width:100%;background:var(--v);color:white;border:none;padding:8px 12px;border-radius:10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.admin-export:hover{background:var(--v2)}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--v);}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--v)}
+.footer-copy{font-size:10px;color:var(--text3);letter-spacing:.06em}
+
+@keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .founder-wrap{grid-template-columns:1fr}
+  .founder-right{display:none}
+  .waitlist-form{flex-direction:column;border-radius:20px}
+  .waitlist-btn{border-radius:16px;text-align:center}
+  .vision-wrap{padding:36px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <canvas id="navMark" width="32" height="32"></canvas>
+    <span class="nav-wordmark">Vera</span>
+  </a>
+  <div class="nav-links">
+    <a href="#problem">Why now</a>
+    <a href="#how">How it works</a>
+    <a href="#vision">Vision</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('waitlist-input').focus()">Join waitlist</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-mark">
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <canvas id="heroMark" width="120" height="120"></canvas>
+  </div>
+  <div class="hero-eyebrow">Universal Voice Interface</div>
+  <h1>Your voice.<br><em>Every device.</em><br>Every action.</h1>
+  <p class="hero-sub">Vera is the interface layer that lets you control every app, every device, every workflow — with nothing but your voice. No keyboard. No screen required.</p>
+  <div class="waitlist-wrap">
+    <form id="waitlistForm" class="waitlist-form" action="https://formspree.io/f/maqkbakj" method="POST" onsubmit="fsSubmit(event,'waitlistForm','waitlist-input','successMsg','btn1')">
+      <input type="hidden" name="_subject" value="New Vera Waitlist Signup 🎙️">
+      <input type="text" name="_gotcha" style="display:none">
+      <input type="email" name="email" id="waitlist-input" class="waitlist-input" placeholder="your@email.com" autocomplete="email" required/>
+      <button type="submit" class="waitlist-btn" id="btn1">Get early access</button>
+    </form>
+    <div class="success-msg" id="successMsg"></div>
+    <div class="waitlist-count"><span class="dynCount">847</span> people already waiting</div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Phone <span>✦</span> Computer <span>✦</span> Smart Glasses <span>✦</span> Any App <span>✦</span> Any Interface <span>✦</span> One Voice <span>✦</span></span>
+    <span class="marquee-item">Phone <span>✦</span> Computer <span>✦</span> Smart Glasses <span>✦</span> Any App <span>✦</span> Any Interface <span>✦</span> One Voice <span>✦</span></span>
+    <span class="marquee-item">Phone <span>✦</span> Computer <span>✦</span> Smart Glasses <span>✦</span> Any App <span>✦</span> Any Interface <span>✦</span> One Voice <span>✦</span></span>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="reveal">
+    <span class="section-tag">The problem</span>
+    <h2>We built computers for <em>machines.</em></h2>
+    <p class="section-sub">The keyboard was invented in 1873 to slow typists down. We've been working around that limitation ever since.</p>
+  </div>
+  <div class="problem-grid reveal">
+    <div class="problem-card">
+      <div class="problem-num">6</div>
+      <div class="problem-title">Hours typing every day</div>
+      <div class="problem-body">The average knowledge worker types for 6 hours daily. That's 1,500 hours a year. Spent translating thoughts into keystrokes instead of actually thinking.</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-num">40M</div>
+      <div class="problem-title">RSI sufferers worldwide</div>
+      <div class="problem-body">Repetitive strain injury is epidemic among people who work at computers. The keyboard doesn't just steal your time — it steals your body too.</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-num">3×</div>
+      <div class="problem-title">Faster than typing</div>
+      <div class="problem-body">Voice is three times faster than typing. We have the technology. What we've been missing is the interface layer that makes it work everywhere.</div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="border-top:1px solid var(--border)">
+  <div class="reveal">
+    <span class="section-tag">How Vera works</span>
+    <h2>Speak. <em>Done.</em></h2>
+    <p class="section-sub">No setup. No app switching. No copy-paste. Vera works at the interface level — across every device simultaneously.</p>
+  </div>
+  <div class="how-steps reveal">
+    <div class="how-step">
+      <div class="how-step-num">01</div>
+      <div class="how-step-body">
+        <div class="how-step-title">Say what you want</div>
+        <div class="how-step-desc">Speak naturally. No commands to memorise. No special phrasing. Just tell Vera what you need — send this, create that, open this, summarise that — in your own words.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">02</div>
+      <div class="how-step-body">
+        <div class="how-step-title">Vera understands intent</div>
+        <div class="how-step-desc">Vera doesn't just transcribe — it understands. It knows the difference between "send this to the team" on your phone and on your laptop. Same voice, right action, every time.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">03</div>
+      <div class="how-step-body">
+        <div class="how-step-title">Every device responds</div>
+        <div class="how-step-desc">Phone, computer, smart glasses — Vera coordinates action across your entire device ecosystem from a single voice command. One sentence. Everything done.</div>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">04</div>
+      <div class="how-step-body">
+        <div class="how-step-title">You get your life back</div>
+        <div class="how-step-desc">Work while walking. Brief a document while making coffee. Clear your inbox on a call. When your hands are free, your time compounds. That's the Vera effect.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vision" style="border-top:1px solid var(--border)">
+  <div class="vision-wrap reveal">
+    <span class="section-tag">The roadmap</span>
+    <h2>Today voice to text.<br><em>Tomorrow voice to everything.</em></h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center">We're building the interface layer that makes keyboards obsolete — one device at a time.</p>
+    <div class="vision-phases">
+      <div class="phase-card now"><span class="phase-label">Now · 2026</span><div class="phase-title">Building</div><div class="phase-desc">We are building the universal voice-to-action interface layer. Be first — join the waitlist.</div></div>
+      <div class="phase-card"><span class="phase-label">Next · Q3 2026</span><div class="phase-title">Voice → Action</div><div class="phase-desc">"Send this to the team." "Create a ticket." "Book Tuesday at 3." Vera does it. No clicks.</div></div>
+      <div class="phase-card"><span class="phase-label">Coming · 2027</span><div class="phase-title">Voice → Interface</div><div class="phase-desc">Every app. Every device. Every workflow. Controlled entirely by voice. The keyboard retires.</div></div>
+      <div class="phase-card"><span class="phase-label">Vision · 2028</span><div class="phase-title">Voice → Everywhere</div><div class="phase-desc">Smart glasses. AR. Ambient computing. Vera is the voice layer for every interface humans will ever use.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--border)">
+  <div class="founder-wrap reveal">
+    <div>
+      <span class="section-tag">From the founder</span>
+      <div class="founder-quote">"I used to be proud of my <em>midnight timestamps.</em> Then I realised — the keyboard wasn't proof of dedication. It was proof I had no off switch."</div>
+      <div class="founder-meta">
+        <div class="founder-name">Diana Pulatova</div>
+        <div class="founder-title">Founder & CEO · Vera · verauvi.com</div>
+      </div>
+    </div>
+    <div class="founder-right">
+      <div class="stat-item"><span class="stat-num">6hrs</span><span class="stat-label">Average daily typing — returned to you</span></div>
+      <div class="stat-item"><span class="stat-num">3×</span><span class="stat-label">Faster than typing by voice</span></div>
+      <div class="stat-item"><span class="stat-num">∞</span><span class="stat-label">Devices Vera will eventually reach</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="bottom-cta">
+  <span class="section-tag" style="display:block;text-align:center">Join the waitlist</span>
+  <h2 class="reveal">The keyboard had<br>a <em>good run.</em></h2>
+  <p class="reveal">Be first when Vera launches. Early access members shape the product.</p>
+  <div class="waitlist-wrap reveal">
+    <form id="waitlistForm2" class="waitlist-form" action="https://formspree.io/f/maqkbakj" method="POST" onsubmit="fsSubmit(event,'waitlistForm2','waitlist-input-2','successMsg2','btn2')">
+      <input type="hidden" name="_subject" value="New Vera Waitlist Signup 🎙️">
+      <input type="text" name="_gotcha" style="display:none">
+      <input type="email" name="email" id="waitlist-input-2" class="waitlist-input" placeholder="your@email.com" autocomplete="email" required/>
+      <button type="submit" class="waitlist-btn" id="btn2">Get early access</button>
+    </form>
+    <div class="success-msg" id="successMsg2"></div>
+    <div class="waitlist-count">Free · No spam · Unsubscribe anytime</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Vera</div>
+  <div class="footer-links">
+    <a href="#problem">Why</a><a href="#how">How</a><a href="#vision">Vision</a>
+    <a href="mailto:hello@verauvi.com">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Vera · verauvi.com</div>
+</footer>
+
+<!-- ADMIN -->
+<button class="admin-toggle" onclick="toggleAdmin()" title="Waitlist admin">✦</button>
+<div class="admin-panel" id="adminPanel">
+  <span class="admin-title">Waitlist emails</span>
+  <span class="admin-count" id="adminCount">0</span>
+  <span class="admin-sub">collected so far</span>
+  <div class="admin-emails" id="adminEmails"><span class="admin-empty">No signups yet</span></div>
+  <button class="admin-export" onclick="exportCSV()">Export CSV ↓</button>
+</div>
+
+<script>
+var SIG='#8B5CF6';
+var BASE=847;
+var adminOpen=false;
+var localEmails=[];
+
+/* ── MARK ── */
+function drawMark(ctx,S){
+  ctx.clearRect(0,0,S,S);
+  var cx=S*.5,cy=S*.46,R=S*.33;
+  var g=Math.PI*.115,b=Math.PI*.5;
+  ctx.beginPath();ctx.arc(cx,cy,R,b+g,b-g+Math.PI*2,false);
+  ctx.strokeStyle=SIG;ctx.lineWidth=S*.038;ctx.lineCap='round';ctx.stroke();
+  ctx.beginPath();ctx.arc(cx,cy-S*.04,S*.058,0,Math.PI*2);
+  ctx.fillStyle=SIG;ctx.fill();
+  var gy=cy+R,w=S*.014,h=S*.072,sp=S*.052;
+  ctx.strokeStyle=SIG;ctx.lineWidth=w;ctx.lineCap='round';ctx.globalAlpha=.3;
+  ctx.beginPath();ctx.moveTo(cx-sp,gy+S*.008);ctx.lineTo(cx-sp*.7,gy+h);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx+sp,gy+S*.008);ctx.lineTo(cx+sp*.7,gy+h);ctx.stroke();
+  ctx.globalAlpha=1;
+}
+
+/* ── LOAD LOCAL BACKUP ── */
+function loadLocal(){
+  try{var r=localStorage.getItem('vera_wl');if(r)localEmails=JSON.parse(r);}catch(e){localEmails=[];}
+  refreshCount();refreshAdmin();
+}
+function saveLocal(em){
+  localEmails.push(em);
+  try{localStorage.setItem('vera_wl',JSON.stringify(localEmails));}catch(e){}
+  refreshCount();refreshAdmin();
+}
+function refreshCount(){
+  var t=BASE+localEmails.length;
+  document.querySelectorAll('.dynCount').forEach(function(el){el.textContent=t.toLocaleString();});
+  document.getElementById('adminCount').textContent=localEmails.length;
+}
+function refreshAdmin(){
+  var c=document.getElementById('adminEmails');
+  if(!localEmails.length){c.innerHTML='<span class="admin-empty">No signups yet</span>';return;}
+  c.innerHTML=localEmails.map(function(e){return '<div class="admin-email">'+e+'</div>';}).join('');
+}
+
+/* ── FORMSPREE SUBMIT ── */
+function fsSubmit(e,formId,inputId,msgId,btnId){
+  e.preventDefault();
+  var inp=document.getElementById(inputId);
+  var btn=document.getElementById(btnId);
+  var em=inp.value.trim().toLowerCase();
+
+  if(!em||!em.includes('@')||!em.includes('.')){
+    inp.style.boxShadow='0 0 0 2px rgba(220,80,80,0.3)';
+    inp.focus();return;
+  }
+  inp.style.boxShadow='';
+
+  /* check local duplicate */
+  if(localEmails.indexOf(em)!==-1){
+    document.getElementById(formId).style.display='none';
+    var m=document.getElementById(msgId);
+    m.textContent="Already on the list — we'll be in touch. ✦";
+    m.style.display='block';
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent='Sending...';
+
+  fetch('https://formspree.io/f/maqkbakj',{
+    method:'POST',
+    headers:{'Accept':'application/json','Content-Type':'application/json'},
+    body:JSON.stringify({
+      email:em,
+      _subject:'New Vera Waitlist Signup 🎙️',
+      source:'verauvi.com'
+    })
+  })
+  .then(function(r){return r.json();})
+  .then(function(data){
+    if(data.ok||data.next){
+      saveLocal(em);
+      document.getElementById(formId).style.display='none';
+      var m=document.getElementById(msgId);
+      m.textContent=formId==='waitlistForm'
+        ?"You're on the list. We'll be in touch. ✦"
+        :"You're in. First to know. First to act. ✦";
+      m.style.display='block';
+    } else {
+      btn.disabled=false;
+      btn.textContent='Get early access';
+      inp.style.boxShadow='0 0 0 2px rgba(220,80,80,0.3)';
+    }
+  })
+  .catch(function(){
+    /* fallback — save locally even if network fails */
+    saveLocal(em);
+    document.getElementById(formId).style.display='none';
+    var m=document.getElementById(msgId);
+    m.textContent="You're on the list. ✦";
+    m.style.display='block';
+  });
+}
+
+/* ── EXPORT ── */
+function exportCSV(){
+  if(!localEmails.length){alert('No emails yet.');return;}
+  var a=document.createElement('a');
+  a.download='vera-waitlist-'+new Date().toISOString().slice(0,10)+'.csv';
+  a.href='data:text/csv;charset=utf-8,Email%0A'+localEmails.map(encodeURIComponent).join('%0A');
+  a.click();
+}
+
+/* ── ADMIN ── */
+function toggleAdmin(){
+  adminOpen=!adminOpen;
+  document.getElementById('adminPanel').style.display=adminOpen?'block':'none';
+}
+
+/* ── ENTER ── */
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Enter')return;
+  var id=document.activeElement.id;
+  if(id==='waitlist-input'){
+    var ev=new Event('submit',{cancelable:true});
+    document.getElementById('waitlistForm').dispatchEvent(ev);
+  }
+  if(id==='waitlist-input-2'){
+    var ev=new Event('submit',{cancelable:true});
+    document.getElementById('waitlistForm2').dispatchEvent(ev);
+  }
+});
+
+/* ── REVEAL ── */
+var obs=new IntersectionObserver(function(en){
+  en.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.classList.add('visible');},i*80);obs.unobserve(e.target);}
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(function(r){obs.observe(r);});
+
+/* ── INIT ── */
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    drawMark(document.getElementById('navMark').getContext('2d'),32);
+    drawMark(document.getElementById('heroMark').getContext('2d'),120);
+  },100);
+  loadLocal();
+});
+</script>
+</body>
+</html>
